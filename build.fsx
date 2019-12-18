@@ -20,7 +20,7 @@ open Fake.JavaScript
 Target.create "Clean" (fun _ ->
     !! "src/bin"
     ++ "src/obj"
-    ++ "output"
+    ++ "docs"
     |> Seq.iter Shell.cleanDir
 )
 
@@ -47,7 +47,7 @@ let githubLink = "git@github.com:MangelMaxime/fulma-demo.git"
 let publishBranch = "gh-pages"
 let fableRoot   = __SOURCE_DIRECTORY__
 let temp        = fableRoot </> "temp"
-let docsOuput = fableRoot </> "output"
+let docsOuput = fableRoot </> "docs"
 
 // --------------------------------------------------------------------------------------
 // Release Scripts

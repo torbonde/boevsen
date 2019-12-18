@@ -8,7 +8,7 @@ var CONFIG = {
     indexHtmlTemplate: './src/index.html',
     fsharpEntry: './src/Demo.fsproj',
     cssEntry: './src/scss/main.scss',
-    outputDir: './output',
+    outputDir: './docs',
     assetsDir: './public',
     devServerPort: 8080,
     // When using webpack-dev-server, you may need to redirect some calls

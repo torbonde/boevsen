@@ -14,5 +14,5 @@ let root user model dispatch =
                 [ Input.text [ Input.Placeholder "Ex: Maxime" ] ] ]
           Field.div []
             [ Control.p [] [
-                Input.number [ ]
+                Input.tel [ ]
             ] ] ]
