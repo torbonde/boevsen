@@ -8,5 +8,6 @@ Fable.React
 Fable.Promise
 Fulma
 Fulma.Extensions.Wikiki.PageLoader
+Fulma.Elmish
 Fable.FontAwesome.Free
 Thoth.Json

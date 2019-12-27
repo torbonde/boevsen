@@ -55,3 +55,6 @@ let update msg model =
 
     | (ToggleBurger, _) ->
         { model with IsBurgerOpen = not model.IsBurgerOpen }, Cmd.none
+    | (BeerScoreDispatcherMsg(msg'), { BeerScoreModel = model' }) ->
+        let submodel, cmd = BeerScore.View.update msg' model'
+        { model with BeerScoreModel = submodel }, Cmd.map BeerScoreDispatcherMsg cmd

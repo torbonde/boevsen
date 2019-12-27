@@ -17,6 +17,7 @@ type Model =
     { CurrentPage : Router.Page
       Session : User
       QuestionDispatcher : Question.Dispatcher.Types.Model option
+      BeerScoreModel: BeerScore.View.BeerScoreModel
       IsBurgerOpen : bool }
 
     static member Empty =
@@ -29,9 +30,11 @@ type Model =
             | Some user -> user
             | None -> failwithf "User#%i not found" userId
           QuestionDispatcher = None
-          IsBurgerOpen = false }
+          IsBurgerOpen = false
+          BeerScoreModel = BeerScore.View.BeerScoreModel.init() }
 
 type Msg =
     | QuestionDispatcherMsg of Question.Dispatcher.Types.Msg
+    | BeerScoreDispatcherMsg of BeerScore.View.BeerScoreMsg
     | ResetDatabase
     | ToggleBurger

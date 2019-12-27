@@ -4,6 +4,18 @@
 // Customize
 // Colors
 $primary: #2D3947;
+
+$custom-yellow-green: #85f038;
+$custom-yellow-green-invert: findColorInvert($custom-yellow-green);
+$custom-orange: #ff7e47;
+$custom-orange-invert: findColorInvert($custom-orange);
+
+// Since bulma 7.0 we have `custom-colors` and `custom-shades`
+$custom-colors: (
+  "custom-yellow-green":($custom-yellow-green, $custom-yellow-green-invert),
+  "custom-orange": ($custom-orange, $custom-orange-invert),
+);
+
 // Links
 $link-hover: #00D1B2;
 
@@ -12,6 +24,8 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts/";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "~@fortawesome/fontawesome-free/scss/regular.scss";
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+@import '~bulma/sass/utilities/derived-variables.sass';
 
 @import '~bulma/bulma.sass';
 @import '~bulma-pageloader/dist/css/bulma-pageloader.sass';

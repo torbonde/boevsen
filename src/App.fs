@@ -71,7 +71,7 @@ let private renderPage model dispatch =
         QuestionDispatcher = Some extractedModel } ->
         Question.Dispatcher.View.root model.Session extractedModel (QuestionDispatcherMsg >> dispatch)
     | { CurrentPage = Router.BeerScore } ->
-        BeerScore.View.root 1 2 3
+        BeerScore.View.root model.BeerScoreModel (BeerScoreDispatcherMsg >> dispatch)
     | _ ->
         Render.pageNotFound
 
