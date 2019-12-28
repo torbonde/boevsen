@@ -23,15 +23,15 @@ let private toHash page =
         | Show id -> sprintf "#question/%i" id
         | Create -> "#question/create"
     | Home -> "#/"
-    | BeerScore -> "#beerscore/index"
+    | BeerScore -> "#/"
 
 let pageParser: Parser<Page->Page,Page> =
     oneOf [
         map (QuestionPage.Index |> Question) (s "question" </> s "index")
         map (QuestionPage.Show >> Question) (s "question" </> i32)
         map (QuestionPage.Create |> Question) (s "question" </> s "create")
-        map (QuestionPage.Index |> Question) top
-        map (BeerScore) (s "beerscore" </> s "index") ]
+        // map (QuestionPage.Index |> Question) top
+        map (BeerScore) top ]
 
 let href route =
     Href (toHash route)

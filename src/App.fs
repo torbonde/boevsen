@@ -50,7 +50,8 @@ let private navbarView isBurgerOpen dispatch =
                             [ str "Fulma-demo" ] ]
                       // Icon display only on mobile
                       Navbar.Item.a [ Navbar.Item.Props [ Href "https://github.com/MangelMaxime/fulma-demo" ]
-                                      Navbar.Item.CustomClass "is-hidden-desktop" ]
+                                      Navbar.Item.CustomClass "is-hidden-desktop"
+                                      ]
                                     [ Icon.icon [ ]
                                         [ Fa.i [ Fa.Brand.Github
                                                  Fa.Size Fa.FaLarge ] [ ] ] ]
@@ -77,8 +78,7 @@ let private renderPage model dispatch =
 
 let private root model dispatch =
     div [ ]
-        [ navbarView model.IsBurgerOpen dispatch
-          renderPage model dispatch ]
+        [ renderPage model dispatch ]
 
 
 open Elmish.Debug

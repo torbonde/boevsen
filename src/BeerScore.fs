@@ -88,7 +88,7 @@ let isAnyBeerRatingMissing beerId model =
 
 let rateBeerRaterView beerId rater (model: BeerScoreModel) dispatch =
   details [ Props.Open (isAnyBeerRaterRatingMissing beerId rater model) ] [
-    summary [ ] [ Button.span [ Button.Color IsWhite] [ str rater ] ]
+    summary [ ] [ Button.span [ Button.Color IsWhite] [ b [] [ str rater ] ] ]
     Columns.columns [ Columns.IsMobile ] [
       aspectRating beerId rater Taste model dispatch
       aspectRating beerId rater Look model dispatch
@@ -98,12 +98,13 @@ let rateBeerRaterView beerId rater (model: BeerScoreModel) dispatch =
 
 let rateBeerView (beerId: BeerId) (model: BeerScoreModel) dispatch =
   details [ Props.Open (isAnyBeerRatingMissing beerId model) ] [
-    yield summary [ ] [ Button.span [ Button.Color IsWhite ] [ str (string beerId) ]]
+    yield summary [ ] [ Button.span [ Button.Color IsWhite ] [ Heading.p [ Heading.Is4 ] [ str (sprintf "Øl %i" beerId) ]] ]
     yield! model.Raters |> List.map (fun rater -> rateBeerRaterView beerId rater model dispatch)
   ]
 
 let root (model: BeerScoreModel) dispatch =
     Container.container [ ]
-        [ yield Heading.h3 [] [str "Hello"]
-          yield! model.Beers |> List.map (fun beerId -> rateBeerView beerId model dispatch)
-        ]
+        [ Section.section [ ] [
+            yield Heading.p [ Heading.Is3 ] [str "Giv karakter"]
+            yield! model.Beers |> List.map (fun beerId -> rateBeerView beerId model dispatch)
+        ] ]
