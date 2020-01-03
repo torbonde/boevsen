@@ -17,13 +17,11 @@ type Model =
     { CurrentPage : Router.Page
       Session : User
       QuestionDispatcher : Question.Dispatcher.Types.Model option
-      BeerScoreModel: BeerScore.View.BeerScoreModel
+      BeerModel: Beer.Types.Model
       IsBurgerOpen : bool }
 
     static member Empty =
-        { CurrentPage =
-            Router.QuestionPage.Index
-            |> Router.Question
+        { CurrentPage = Router.Beer(Router.Registration)
           Session =
             let userId = 3
             match Database.GetUserById userId with
@@ -31,10 +29,10 @@ type Model =
             | None -> failwithf "User#%i not found" userId
           QuestionDispatcher = None
           IsBurgerOpen = false
-          BeerScoreModel = BeerScore.View.BeerScoreModel.init() }
+          BeerModel = Beer.State.init() }
 
 type Msg =
     | QuestionDispatcherMsg of Question.Dispatcher.Types.Msg
-    | BeerScoreDispatcherMsg of BeerScore.View.BeerScoreMsg
+    | BeerDispatcherMsg of Beer.Types.Msg
     | ResetDatabase
     | ToggleBurger

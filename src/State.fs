@@ -22,7 +22,7 @@ let urlUpdate (result: Option<Router.Page>) model =
         | Router.Home ->
             let (subModel, subCmd) = Question.Dispatcher.State.init Router.QuestionPage.Index
             { model with QuestionDispatcher = Some subModel }, Cmd.map QuestionDispatcherMsg subCmd
-        | Router.BeerScore ->
+        | Router.Beer(_) ->
             let (subModel, subCmd) = Question.Dispatcher.State.init Router.QuestionPage.Index
             { model with QuestionDispatcher = Some subModel }, Cmd.map QuestionDispatcherMsg subCmd
 
@@ -55,6 +55,6 @@ let update msg model =
 
     | (ToggleBurger, _) ->
         { model with IsBurgerOpen = not model.IsBurgerOpen }, Cmd.none
-    | (BeerScoreDispatcherMsg(msg'), { BeerScoreModel = model' }) ->
-        let submodel, cmd = BeerScore.View.update msg' model'
-        { model with BeerScoreModel = submodel }, Cmd.map BeerScoreDispatcherMsg cmd
+    | (BeerDispatcherMsg(msg'), { BeerModel = model' }) ->
+        let submodel, cmd = Beer.State.update msg' model'
+        { model with BeerModel = submodel }, Cmd.map BeerDispatcherMsg cmd

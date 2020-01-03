@@ -27,7 +27,7 @@ let private navbarStart dispatch =
                                                         |> Router.modifyLocation) ] ]
             [ str "Home" ]
           Navbar.Item.a [ Navbar.Item.Props [ OnClick (fun _ ->
-                                                        Router.BeerScore
+                                                        Router.Beer(Router.Rating)
                                                         |> Router.modifyLocation) ] ]
             [ str "Beer score" ]
           Navbar.Item.div [ Navbar.Item.HasDropdown
@@ -71,8 +71,8 @@ let private renderPage model dispatch =
     | { CurrentPage = Router.Question _
         QuestionDispatcher = Some extractedModel } ->
         Question.Dispatcher.View.root model.Session extractedModel (QuestionDispatcherMsg >> dispatch)
-    | { CurrentPage = Router.BeerScore } ->
-        BeerScore.View.root model.BeerScoreModel (BeerScoreDispatcherMsg >> dispatch)
+    | { CurrentPage = Router.Beer(page) } ->
+        Beer.View.root page model.BeerModel (BeerDispatcherMsg >> dispatch)
     | _ ->
         Render.pageNotFound
 
